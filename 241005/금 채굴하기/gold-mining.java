@@ -37,7 +37,7 @@ public class Main {
                             }
                         }
                     }
-                    if(count * m > bill) {
+                    if(count * m >= bill) {
                         maxVal = Math.max(maxVal, count);
                     }
                 }

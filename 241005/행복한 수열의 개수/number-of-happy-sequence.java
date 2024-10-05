@@ -26,23 +26,21 @@ public class Main {
 
     // 행을 체크하는 함수
     public static int rowCheck(int arr[][]) {
-        int pre;
         int cnt;
         int res = 0;
         for (int i = 0; i < n; i++) {
             cnt = 1;
-            pre = arr[i][0]; // 행을 기준으로
             for (int j = 1; j < n; j++) {
-                if (arr[i][j] == pre) {
+                if (arr[i][j] == arr[i][j - 1]) {
                     cnt++;
                 } else {
                     cnt = 1;
                 }
-                if (cnt >= m) {
+                // 연속된 숫자가 m 이상일 때만 카운트
+                if (cnt == m) {
                     res++;
-                    break;
+                    break; // 한 번 찾으면 해당 행은 종료
                 }
-                pre = arr[i][j];
             }
         }
         return res;
@@ -50,23 +48,21 @@ public class Main {
 
     // 열을 체크하는 함수
     public static int colCheck(int arr[][]) {
-        int pre;
         int cnt;
         int res = 0;
         for (int i = 0; i < n; i++) {
             cnt = 1;
-            pre = arr[0][i]; // 열을 기준으로
             for (int j = 1; j < n; j++) {
-                if (arr[j][i] == pre) {
+                if (arr[j][i] == arr[j - 1][i]) {
                     cnt++;
                 } else {
                     cnt = 1;
                 }
-                if (cnt >= m) {
+                // 연속된 숫자가 m 이상일 때만 카운트
+                if (cnt == m) {
                     res++;
-                    break;
+                    break; // 한 번 찾으면 해당 열은 종료
                 }
-                pre = arr[j][i];
             }
         }
         return res;

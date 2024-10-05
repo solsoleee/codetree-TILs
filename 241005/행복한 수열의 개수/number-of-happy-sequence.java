@@ -37,7 +37,7 @@ public class Main {
                     cnt = 1;
                 }
                 // 연속된 숫자가 m 이상일 때만 카운트
-                if (cnt == m) {
+                if (cnt >= m) {
                     res++;
                     break; // 한 번 찾으면 해당 행은 종료
                 }
@@ -59,7 +59,7 @@ public class Main {
                     cnt = 1;
                 }
                 // 연속된 숫자가 m 이상일 때만 카운트
-                if (cnt == m) {
+                if (cnt >= m) {
                     res++;
                     break; // 한 번 찾으면 해당 열은 종료
                 }

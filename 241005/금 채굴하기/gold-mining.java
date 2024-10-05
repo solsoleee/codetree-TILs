@@ -20,21 +20,28 @@ public class Main {
                 map[i][j] = Integer.parseInt(tokens.nextToken());
             }
         }
-        int r = n/2;
+
         int count;
         int maxVal = Integer.MIN_VALUE;
         for(int i=0; i<n; i++) {
             for(int j=0; j<n; j++) {
 
-                count=0;
-                for(int row = 0; row<n; row++) {
-                    for(int col=0; col<n; col++ ) {
-                        if( Math.abs(i-row) + Math.abs(j-col) <= r){
-                            if(map[row][col] == 1) count++;
+
+                for(int r=0; r<=n/2; r++) {
+                    count=0;
+                    int bill = r*r + (r+1) *(r+1);//비용 계산
+                    for(int row = 0; row<n; row++) {
+                        for(int col=0; col<n; col++ ) {
+                            if( Math.abs(i-row) + Math.abs(j-col) <= r){
+                                if(map[row][col] == 1) count++;
+                            }
                         }
                     }
+                    if(count * m > bill) {
+                        maxVal = Math.max(maxVal, count);
+                    }
                 }
-                maxVal = Math.max(maxVal, count);
+
             }
         }
         System.out.print(maxVal);

@@ -29,8 +29,8 @@ public class Main {
         int cnt;
         int res=0;
         for(int i=0; i<n; i++) {
-            cnt = 1;
-            pre = -1;
+            cnt = 0;
+            pre = arr[i][0];
             for(int j=0; j<n; j++) {
                 if(arr[j][i] == pre) {
                     cnt ++;
@@ -47,8 +47,8 @@ public class Main {
         int cnt;
         int res=0;
         for(int i=0; i<n; i++) {
-            cnt = 1;
-            pre = -1;
+            cnt = 0;
+            pre = arr[i][0];
             for(int j=0; j<n; j++) {
                 if(arr[i][j] == pre) {
                     cnt ++;

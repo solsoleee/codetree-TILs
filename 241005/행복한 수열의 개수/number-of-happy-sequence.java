@@ -42,6 +42,8 @@ public class Main {
                     break; // 한 번 찾으면 해당 행은 종료
                 }
             }
+            // n이 1인 경우도 처리: 행이 1개일 때도 행복한 수열로 간주
+            if (n == 1) res++;
         }
         return res;
     }
@@ -64,6 +66,8 @@ public class Main {
                     break; // 한 번 찾으면 해당 열은 종료
                 }
             }
+            // n이 1인 경우도 처리: 열이 1개일 때도 행복한 수열로 간주
+            if (n == 1) res++;
         }
         return res;
     }

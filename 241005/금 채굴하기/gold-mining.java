@@ -44,7 +44,8 @@ public class Main {
 
             }
         }
-        System.out.print(maxVal);
+        if(maxVal == Integer.MIN_VALUE) System.out.println(0);
+        else System.out.print(maxVal);
     }
 
 }

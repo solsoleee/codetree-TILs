@@ -27,7 +27,7 @@ public class Main {
             for(int j=0; j<n; j++) {
 
 
-                for(int r=0; r<=n/2; r++) {
+                for(int r=0; r<n; r++) {
                     count=0;
                     int bill = r*r + (r+1) *(r+1);//비용 계산
                     for(int row = 0; row<n; row++) {

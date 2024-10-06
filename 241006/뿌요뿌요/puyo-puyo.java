@@ -36,7 +36,7 @@ public class Main {
                 }
             }
         }
-
+        if(maxVal == Integer.MIN_VALUE) maxVal = 0;
         System.out.println(res +" " + maxVal);
     }
     static int dfs(int x, int y, int val) {

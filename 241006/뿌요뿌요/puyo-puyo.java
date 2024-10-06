@@ -7,7 +7,7 @@ public class Main {
     static StringTokenizer tokens;
     static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
     static int n,m,res;
-    static int maxVal = Integer.MIN_VALUE;
+    static int maxVal = 0;
     static int board[][];
     static boolean visited[][];
     static int deltas[][] = {{1,0},{0,1},{-1,0},{0,-1}};
@@ -36,7 +36,6 @@ public class Main {
                 }
             }
         }
-        if(maxVal == Integer.MIN_VALUE) maxVal = 0;
         System.out.println(res +" " + maxVal);
     }
     static int dfs(int x, int y, int val) {

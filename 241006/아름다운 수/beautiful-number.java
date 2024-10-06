@@ -36,7 +36,7 @@ public class Main {
             return;
         }
 
-        for(int i=1; i<4; i++) {
+        for(int i=1; i<=4; i++) {
             arr[cnt] = i;
             permu(cnt+1);
         }

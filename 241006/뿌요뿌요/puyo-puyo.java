@@ -1,65 +1,60 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Main {
-    static int n;
-    static int[][] board;
-    static boolean[][] visited;
-    static int[][] deltas = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};  // 상하좌우 방향
-    static int blockCount, maxBlockSize;
+    static StringTokenizer tokens;
+    static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+    static int n,m,res;
+    static int maxVal = Integer.MIN_VALUE;
+    static int board[][];
+    static boolean visited[][];
+    static int deltas[][] = {{1,0},{0,1},{-1,0},{0,-1}};
 
     public static void main(String[] args) throws IOException {
-        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+
         n = Integer.parseInt(input.readLine());
         board = new int[n][n];
         visited = new boolean[n][n];
 
-        // 격자 입력 받기
-        for (int i = 0; i < n; i++) {
-            StringTokenizer tokens = new StringTokenizer(input.readLine());
-            for (int j = 0; j < n; j++) {
+        for(int i=0; i<n; i++) {
+            tokens = new StringTokenizer(input.readLine());
+            for(int j=0; j<n; j++) {
                 board[i][j] = Integer.parseInt(tokens.nextToken());
             }
         }
+        for(int i=0; i<n; i++) {
+            for(int j=0; j<n; j++) {
+                if(!visited[i][j]) {
+                    int v = dfs(i,j,board[i][j]);
 
-        // 터질 블럭의 수와 최대 블럭 크기 구하기
-        blockCount = 0;
-        maxBlockSize = 0;
-
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (!visited[i][j]) {
-                    int blockSize = dfs(i, j, board[i][j]);  // 현재 위치에서 DFS 탐색
-                    if (blockSize >= 4) {
-                        blockCount++;  // 블럭 크기가 4 이상일 때만 터뜨림
+                    if(v>=4) {
+                        res++; //터진 개수
+                        maxVal = Math.max(maxVal, v);
                     }
-                    maxBlockSize = Math.max(maxBlockSize, blockSize);  // 최대 블럭 크기 갱신
                 }
             }
         }
 
-        // 결과 출력
-        System.out.println(blockCount + " " + maxBlockSize);
+        System.out.println(res +" " + maxVal);
     }
+    static int dfs(int x, int y, int val) {
 
-    // DFS 탐색: x, y에서 시작하여 같은 숫자들로 이루어진 블럭의 크기 계산
-    static int dfs(int x, int y, int value) {
-        visited[x][y] = true;  // 방문 처리
-        int blockSize = 1;  // 시작점 포함이므로 크기 1부터 시작
+        visited[x][y] = true;
+        int size=1;
 
-        // 상하좌우로 탐색
-        for (int[] delta : deltas) {
-            int nx = x + delta[0];
-            int ny = y + delta[1];
+        for(int d[] : deltas) {
+            int nx = x+d[0];
+            int ny = y+d[1];
+            if(nx >=0 && nx<n && ny>=0 && ny<n) {
+                if(val == board[nx][ny] && !visited[nx][ny]) {
 
-            // 범위 내에 있고, 같은 숫자이며, 아직 방문하지 않은 칸일 때만 탐색
-            if (nx >= 0 && nx < n && ny >= 0 && ny < n && !visited[nx][ny] && board[nx][ny] == value) {
-                blockSize += dfs(nx, ny, value);  // 재귀 호출로 블럭 크기 누적
+                    size += dfs(nx, ny, board[nx][ny]);
+                }
             }
         }
-
-        return blockSize;  // 최종 블럭 크기 반환
+        return size;
     }
+
 }

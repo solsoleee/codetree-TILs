@@ -22,20 +22,24 @@ public class Main {
                 map[i][j] = Integer.parseInt(tokens.nextToken());
             }
         }
-        tokens = new StringTokenizer(input.readLine());
-        r1 = Integer.parseInt(tokens.nextToken())-1;
-        c1 = Integer.parseInt(tokens.nextToken())-1;
-        r2 = Integer.parseInt(tokens.nextToken())-1;
-        c2 = Integer.parseInt(tokens.nextToken())-1;
-        for(int i=0; i<q; i++){
-            change();
-            average();
+        if(q>0){
+            tokens = new StringTokenizer(input.readLine());
+            r1 = Integer.parseInt(tokens.nextToken())-1;
+            c1 = Integer.parseInt(tokens.nextToken())-1;
+            r2 = Integer.parseInt(tokens.nextToken())-1;
+            c2 = Integer.parseInt(tokens.nextToken())-1;
+            for(int i=0; i<q; i++){
+                change();
+                average();
+            }
+
         }
         for(int row = 0; row < n; row++) {
             for(int col = 0; col < m; col++)
                 System.out.print(map[row][col] + " ");
             System.out.println();
         }
+
     }
 
     static void change() {

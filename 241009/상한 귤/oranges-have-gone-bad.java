@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Main {
+public class Main{
 
     static StringTokenizer tokens;
     static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
@@ -29,7 +29,7 @@ public class Main {
                 map[i][j] = Integer.parseInt(tokens.nextToken());
                 if(map[i][j] == 2) {
                     que.offer(new int [] {i,j});
-                    visited[i][j] = 3;
+                    visited[i][j] = -3;
                 } else if (map[i][j]==0) {
                     visited[i][j] = -1;
                 }
@@ -39,7 +39,7 @@ public class Main {
         //3이면 0으로 바꾸고 0이면 -2로 바꾸기
         for(int i=0; i<n; i++) {
             for(int j=0; j<n; j++) {
-                if (visited[i][j] == 3) System.out.print(0 + " ");
+                if (visited[i][j] == -3) System.out.print(0 + " ");
                 else if (visited[i][j] == 0) System.out.print(-2 +" ");
                 else System.out.print(visited[i][j] +" ");
             }

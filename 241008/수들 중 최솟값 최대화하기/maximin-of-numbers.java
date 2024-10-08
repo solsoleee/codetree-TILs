@@ -1,9 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -32,16 +29,15 @@ public class Main {
 				arr[i][j] = Integer.parseInt(tokens.nextToken());
 			}
 		}
-		permutation(0);
+		permutation(0, Integer.MAX_VALUE);
 		System.out.println(maxVal);
 	}
-	static void permutation(int cnt) {
+	static void permutation(int cnt, int currentMin) {
 		if(cnt == n) {
-			int min=Integer.MAX_VALUE;
-			for(int i=0; i<n; i++) {
-				min = Math.min(min, res[i]);
-			}
-			maxVal = Math.max(maxVal, min);
+			// for(int i=0; i<n; i++) {
+			// 	min = Math.min(min, res[i]);
+			// }
+			maxVal = Math.max(maxVal, currentMin);
 			return;
 		}
 		for(int i=0; i<n*n; i++) {
@@ -51,7 +47,7 @@ public class Main {
 				res[cnt] = arr[row][col];
 				visitedRow[row] = true;
 				visitedCol[col] = true;
-				permutation(cnt+1);
+				permutation(cnt+1, Math.min(currentMin, arr[row][col]));
 				visitedRow[row] = false;
 				visitedCol[col] = false;
 			}

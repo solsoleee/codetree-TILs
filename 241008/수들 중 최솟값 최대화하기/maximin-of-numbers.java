@@ -4,45 +4,49 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
-    
-    static StringTokenizer tokens;
-    static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-    static int n;
-    static int arr[][];
-    static boolean visitedRow[];
-    static boolean visitedCol[];
-    static int maxVal = Integer.MIN_VALUE;
 
-    public static void main(String[] args) throws IOException {
-        n = Integer.parseInt(input.readLine());
-        arr = new int[n][n];
-        visitedRow = new boolean[n];
-        visitedCol = new boolean[n];
+	static StringTokenizer tokens;
+	static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+	static int n;
+	static int arr[][];
+	static int res[];
+	static boolean visited[];
+	static int maxVal = Integer.MIN_VALUE;
 
-        for (int i = 0; i < n; i++) {
-            tokens = new StringTokenizer(input.readLine());
-            for (int j = 0; j < n; j++) {
-                arr[i][j] = Integer.parseInt(tokens.nextToken());
-            }
-        }
-        dfs(0, Integer.MAX_VALUE);
-        System.out.println(maxVal);
-    }
+	public static void main(String[] args) throws IOException {
+		n = Integer.parseInt(input.readLine());
+		arr = new int[n][n];
+		visited = new boolean[n];
+		res = new int[n];
+		for (int i = 0; i < n; i++) {
+			tokens = new StringTokenizer(input.readLine());
+			for (int j = 0; j < n; j++) {
+				arr[i][j] = Integer.parseInt(tokens.nextToken());
+			}
+		}
+		dfs(0);
+		System.out.println(maxVal);
+	}
 
-    static void dfs(int cnt, int currentMin) {
-        if (cnt == n) {
-            maxVal = Math.max(maxVal, currentMin);
-            return;
-        }
+	static void dfs(int cnt) {
 
-        for (int i = 0; i < n; i++) {
-            if (!visitedRow[cnt] && !visitedCol[i]) {
-                visitedRow[cnt] = true;
-                visitedCol[i] = true;
-                dfs(cnt + 1, Math.min(currentMin, arr[cnt][i]));
-                visitedRow[cnt] = false;
-                visitedCol[i] = false;
-            }
-        }
-    }
+		if(cnt == n ) {
+			int min = Integer.MAX_VALUE;
+			for(int i = 0; i < n; i++) {
+				min = Math.min(min, res[i]);
+			}
+			maxVal = Math.max(maxVal, min);
+			return;
+		}
+		for(int i=0; i<n; i++) {
+			if(!visited[i]) {
+				visited[i] = true;
+				res[cnt] = arr[cnt][i];
+				dfs(cnt+1);
+				visited[i] = false;
+			}
+		}
+
+
+	}
 }

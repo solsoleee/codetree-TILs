@@ -9,7 +9,7 @@ public class Main {
     static int res[];
     static int arr[] ={1,2,3,4};
     static int n;
-    static long maxVal = Integer.MIN_VALUE;
+    static long maxVal = Long.MIN_VALUE;
     static String str[];
 
     public static void main(String[] args) throws IOException {

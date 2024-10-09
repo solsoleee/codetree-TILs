@@ -7,7 +7,7 @@ public class Main {
     static StringTokenizer tokens;
     static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
     static int n, m;
-    static int maxVal = 0;  // 초기값을 0으로 설정
+    static int maxVal = -1;  // 초기값을 -1로 설정하여 양수 직사각형이 없을 때 대비
     static int map[][];
 
     public static void main(String[] args) throws IOException {
@@ -28,18 +28,13 @@ public class Main {
         findMaxRectangle();
         
         // 양수 직사각형이 없을 경우 -1 출력
-        if (maxVal == 0) {
-            System.out.println(-1);
-        } else {
-            System.out.println(maxVal);
-        }
+        System.out.println(maxVal);
     }
 
     static void findMaxRectangle() {
         // 왼쪽 상단 좌표 (i, j)
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-
                 // 오른쪽 하단 좌표 (a, b)
                 for (int a = i; a < n; a++) {
                     for (int b = j; b < m; b++) {

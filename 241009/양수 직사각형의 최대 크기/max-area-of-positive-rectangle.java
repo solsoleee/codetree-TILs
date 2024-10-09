@@ -8,7 +8,7 @@ public class Main{
     static StringTokenizer tokens;
     static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
     static int n,m;
-    static int maxVal = Integer.MIN_VALUE;
+    static int maxVal;
     static int map[][];
     static int arr[] = new int [4];
 

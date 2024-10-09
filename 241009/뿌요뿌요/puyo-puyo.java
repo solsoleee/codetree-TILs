@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.*;
-
 public class Main {
     static StringTokenizer tokens;
     static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
@@ -25,19 +24,16 @@ public class Main {
             for(int j=0; j<n; j++) {
                 if(!visited[i][j]) {
                     sum=1;
-                    dfs(i,j,1);
+                    dfs(i,j);
                     if(sum >=4) res++;
+                    maxVal = Math.max(sum, maxVal);
                 }
-                maxVal = Math.max(sum, maxVal);
             }
         }
         System.out.println(res +" " +maxVal);
 
     }
-    static void dfs(int x, int y, int cnt) {
-        if(cnt == n*n) { //다 방문 했으면
-            return;
-        }
+    static void dfs(int x, int y) {
         visited[x][y] =true;
         for(int d[]: deltas) {
             int nx = x+d[0];
@@ -45,7 +41,7 @@ public class Main {
             if(check(nx,ny) && !visited[nx][ny]) { //같은 숫자로 이루어져야함
                 if(map[x][y] == map[nx][ny]) {
                     sum++;
-                    dfs(nx,ny,cnt+1);
+                    dfs(nx,ny);
                 }
             }
         }

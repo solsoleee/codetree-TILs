@@ -15,12 +15,12 @@ public class Main {
     public static void main(String[] args) throws IOException {
         str = input.readLine().split("");
         n = str.length/2 +1;
-        res = new int [n];
+        res = new int [6];
         permutation(0);
         System.out.print(maxVal);
     }
     static void permutation(int cnt) {
-        if(cnt == n) {
+        if(cnt == 6) {
             //res의 결과
             long c = calc();
             maxVal = Math.max(maxVal, c);
@@ -33,28 +33,35 @@ public class Main {
     }
 
     static long calc() {
-        int idx=0;
-        for(int i=0; i< str.length; i+=2) { //짝수만
-            str[i] = String.valueOf(res[idx]);
-            idx++;
-        }
-        //str 가지고 계산하기
-        long sum = Integer.parseInt(str[0]);
-        for(int i=1; i<str.length-1; i++) {
+        int sum = res[alpa(str[0].charAt(0))];
+        for(int i=0; i<str.length; i++) {
             if(i%2==1) { //연산자일 때
                 if(str[i].equals("-")) {
-                    sum = sum - Integer.parseInt(str[i+1]);
+                    sum = sum - res[alpa(str[i+1].charAt(0))];
                 } else if (str[i].equals("+")) {
-                    sum = sum + Integer.parseInt(str[i+1]);
+                    sum = sum + res[alpa(str[i+1].charAt(0))];
                 }
                 else{
-                    sum = sum * Integer.parseInt(str[i+1]);
+                    sum = sum * res[alpa(str[i+1].charAt(0))];
                 }
             }
         }
         return sum;
     }
 
-
+    static int alpa(char c) {
+        if(c == 'a') return 0;
+        else if (c=='b') {
+            return 1;
+        } else if (c=='c') {
+            return 2;
+        } else if (c=='d') {
+            return 3;
+        } else if (c=='e') {
+            return 4;
+        } else {
+            return 5;
+        }
+    }
 
 }

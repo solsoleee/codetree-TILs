@@ -33,8 +33,8 @@ public class Main {
             for(int j=0; j<m; j++) {
 
                 //오른쪽 끝점
-                for(int a=i+1; a<n; a++) {
-                    for(int b=j+1; b<m; b++) {
+                for(int a=i; a<n; a++) {
+                    for(int b=j; b<m; b++) {
 
                         boolean flag = true;
                         for(int r1=i; r1<=a; r1++) {

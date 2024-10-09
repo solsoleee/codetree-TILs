@@ -44,7 +44,7 @@ public class Main {
                         for (int r = i; r <= a; r++) {
                             if (!allPositive) break; // 내부 확인 도중 음수를 발견하면 중단
                             for (int c = j; c <= b; c++) {
-                                if (map[r][c] < 0) {
+                                if (map[r][c] <= 0) {
                                     allPositive = false;
                                     break;
                                 }

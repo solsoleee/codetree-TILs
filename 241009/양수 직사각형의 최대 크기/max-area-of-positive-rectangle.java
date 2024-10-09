@@ -24,7 +24,8 @@ public class Main {
         }
 
         rectangle();
-        System.out.println(maxVal);
+        if(maxVal ==0 ) System.out.println(-1);
+        else System.out.println(maxVal);
 
     }
     static void rectangle() {

@@ -1,14 +1,16 @@
+package codeTree;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main{
+public class Main {
     static StringTokenizer tokens;
     static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
     static int n,m;
-    static int maxVal;
+    static int maxVal = Integer.MIN_VALUE;
     static int map[][];
     static int arr[] = new int [4];
 
@@ -34,8 +36,8 @@ public class Main{
             for(int j=0; j<m; j++) {
 
                 //오른쪽 끝점
-                for(int a=0; a<n; a++) {
-                    for(int b=1; b<m; b++) {
+                for(int a=i; a<n; a++) {
+                    for(int b=j; b<m; b++) {
                         arr[0] = i;
                         arr[1] =j;
                         arr[2] = a;

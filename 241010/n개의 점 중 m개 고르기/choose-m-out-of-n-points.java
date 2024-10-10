@@ -45,13 +45,16 @@ public class Main {
 	}
 	static int check() {
 		int d=0;
-		int minVal  = Integer.MAX_VALUE;
+		int maxVal  = Integer.MIN_VALUE;
+		//System.out.println(Arrays.deepToString(res));
 		for(int i=0; i<m-1; i++) {
-			for(int j=1; j<m; j++) {
+			for(int j=i+1; j<m; j++) {
 				d = (int) Math.pow(res[i][0] - res[j][0], 2) + (int) Math.pow(res[i][1] - res[j][1], 2);
+				//System.out.println(d);
 			}
-			minVal = Math.min(d, minVal);
+			maxVal = Math.max(d, maxVal);
+			//System.out.println(maxVal);
 		}
-		return minVal;
+		return maxVal;
 	}
 }

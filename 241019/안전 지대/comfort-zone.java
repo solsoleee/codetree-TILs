@@ -10,7 +10,6 @@ public class Main {
     static int deltas[][] ={{0,1}, {1,0},{-1,0},{0,-1}};
     static int n,m;
     static int maxVal = Integer.MIN_VALUE;
-    static int min= Integer.MAX_VALUE;
     static int max = Integer.MIN_VALUE;
     static int map[][];
     static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
@@ -27,12 +26,11 @@ public class Main {
             for (int j = 0; j < m; j++) {
                 map[i][j] = Integer.parseInt(tokens.nextToken());
                 max = Math.max(max, map[i][j]);
-                min = Math.min(min, map[i][j]);
             }
         }
 
         int res = Integer.MAX_VALUE; //그때의 k값
-        for (int k = min; k <= max; k++) {
+        for (int k = 1; k <= max; k++) {
 
             //안전하지 않은 집이면 0으로 바꿈
             for (int i = 0; i < n; i++) {

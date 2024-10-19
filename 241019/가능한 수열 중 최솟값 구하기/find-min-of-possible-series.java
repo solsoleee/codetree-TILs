@@ -1,71 +1,62 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 
 public class Main {
+    public static final int NUM_LEN = 3;
+    
     public static int n;
-    public static int[] res;     // 수열을 저장할 배열
-    public static int[] numbers = new int[]{4, 5, 6}; // 사용할 숫자 배열
-
-    // 두 수열이 동일한지 여부를 판별하는 함수
-    public static boolean isEqual(int start1, int end1, int start2, int end2) {
-        for (int i = 0; i <= end1 - start1; i++) {
-            if (res[start1 + i] != res[start2 + i])  // 배열 값을 비교
-                return false;
-        }
-        return true;
-    }
-
-    // 가능한 수열인지 여부를 판별하는 함수
-    public static boolean isPossibleSeries() {
-        // 수열의 가장 앞부터 각 인덱스가 시작점일 때
-        // 인접한 연속 부분 수열이 동일한지 탐색
-        for (int idx = 0; idx < n; idx++) {
-            // 가능한 연속 부분 수열의 길이 범위를 탐색
-            int len = 1;
-            while (true) {
-                // 연속 부분 수열의 시작과 끝 인덱스를 설정
-                int start1 = idx, end1 = idx + len - 1;
-                int start2 = end1 + 1, end2 = start2 + len - 1;
-
-                // 두 번째 연속 부분 수열의 끝 인덱스가 범위를 넘어가면 탐색 종료
-                if (end2 >= n)
+    public static int[] res;  // 수열을 저장할 배열
+    public static int[] numbers = new int[]{4, 5, 6};
+    public static boolean found = false;  // 정답을 찾았는지 여부
+    
+    // 중복된 연속 부분 수열이 있는지 여부를 확인하는 함수
+    public static boolean hasDuplicate() {
+        int len = res.length;
+        for (int l = 1; l <= len / 2; l++) {  // 연속 부분 수열의 길이 l 탐색
+            boolean isSame = true;
+            for (int i = 0; i < l; i++) {
+                if (res[len - 1 - i] != res[len - 1 - l - i]) {
+                    isSame = false;
                     break;
-
-                // 인접한 연속 부분 수열이 같은지 여부를 확인
-                if (isEqual(start1, end1, start2, end2))
-                    return false;
-
-                len++;
+                }
+            }
+            if (isSame) {  // 중복된 부분 수열이 발견되면
+                return true;
             }
         }
-        return true;  // 중복된 부분 수열이 없으면 true 반환
+        return false;
     }
-
+    
+    // 가능한 수열을 찾는 함수
     public static void findMinSeries(int cnt) {
-        if (cnt == n) {
-            if (isPossibleSeries()) {
-                // 결과 출력
-                for (int i = 0; i < n; i++) {
-                    System.out.print(res[i]);
-                }
-                System.exit(0);  // 정답을 찾으면 프로그램 종료
+        if (found) return;  // 정답을 찾았으면 탐색 종료
+        
+        if (cnt == n) {  // 수열의 길이가 n이 되었을 때
+            // 수열이 가능하다면 출력하고 프로그램 종료
+            for (int i = 0; i < n; i++) {
+                System.out.print(res[i]);
             }
+            found = true;
             return;
         }
-
-        // 각 숫자를 수열에 추가하면서 재귀적으로 탐색
-        for (int i = 0; i < 3; i++) {
-            res[cnt] = numbers[i];  // 수열에 숫자 추가
-            findMinSeries(cnt + 1);  // 다음 자리로 재귀 호출
+    
+        // 각 숫자를 추가하면서 가능한 수열을 탐색
+        for (int i = 0; i < NUM_LEN; i++) {
+            res[cnt] = numbers[i];  // 현재 수열에 숫자를 추가
+            
+            // 중복된 부분 수열이 없다면 다음 자리 탐색
+            if (!hasDuplicate()) {
+                findMinSeries(cnt + 1);
+            }
         }
     }
 
     public static void main(String[] args) throws IOException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-        n = Integer.parseInt(input.readLine());  // n값 입력 받음
+        n = Integer.parseInt(input.readLine().trim());  // 입력을 BufferedReader로 받음
         res = new int[n];  // 결과 수열 크기 n만큼 초기화
-        findMinSeries(0);  // 중복 수열 없이 사전순으로 가장 작은 수열 찾기
+
+        findMinSeries(0);  // 가능한 수열 탐색 시작
     }
 }

@@ -18,56 +18,54 @@ public class Main {
         r = Integer.parseInt(tokens.nextToken())-1;
         c = Integer.parseInt(tokens.nextToken())-1;
         map = new int [n][n];
-        command = new String [m];
-        tokens = new StringTokenizer(input.readLine());
-        for(int i=0; i<m; i++) {
-            command[i] = tokens.nextToken();
-        }
+        //command = new String [m];
+        command = input.readLine().split(" ");
+
         map[r][c] = dice[2][1]; //초기
 
         for(String s: command) {
             //왼쪽
             if(s.equals("L")) {
-                left(); //주사위 돌리기
                 int nx = r;
                 int ny = c - 1;
                 if (check(nx, ny)) {
+                    left(); //주사위 돌리기
                     map[nx][ny] = dice[2][1]; //아랫면 숫자
                     r = nx;
                     c = ny;
                 }
             }
             else if(s.equals("R")) {
-                    right();
                     int nx = r;
                     int ny = c+1;
                 if (check(nx, ny)) {
+                    right();
                     map[nx][ny] = dice[2][1]; //아랫면 숫자
                     r = nx;
                     c = ny;
                 }
             }
             else if(s.equals("U")) {
-                up();
                 int nx = r-1;
                 int ny = c;
                 if (check(nx, ny)) {
+                    up();
                     map[nx][ny] = dice[2][1]; //아랫면 숫자
                     r = nx;
                     c = ny;
                 }
             }
             else {
-                down();
                 int nx = r+1;
                 int ny = c;
                 if (check(nx, ny)) {
+                    down();
                     map[nx][ny] = dice[2][1]; //아랫면 숫자
                     r = nx;
                     c = ny;
                 }
             }
-
+            //System.out.println(Arrays.deepToString(map));
         }
         int res = totalSum();
         System.out.print(res);

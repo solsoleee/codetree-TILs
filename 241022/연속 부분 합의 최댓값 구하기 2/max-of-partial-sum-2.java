@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main {
+public class Main{
 
 
     static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
@@ -17,31 +17,17 @@ public class Main {
         for(int i=0; i<n; i++) {
             arr[i] = Integer.parseInt(tokens.nextToken());
         }
-        int start = 0; //시작점
-        int end = n; //끝점
-
 
         int max = Integer.MIN_VALUE;
+        int sum=0;
+        for(int i=0; i<n; i++) {
+            if(sum < 0 ) sum = arr[i];
+            else sum+=arr[i];
 
-        while(start < end) {
-            int sum = 0;
-            for(int i=start; i<end; i++) {
-                sum += arr[i];
-            }
             max = Math.max(max, sum);
-            start ++;
+
         }
 
-
-        start = 0; //시작점
-        while(start < end) {
-            int sum =0;
-            for(int i=start; i<end; i++) {
-                sum +=arr[i];
-            }
-            max = Math.max(max, sum);
-            end--;
-        }
 
         System.out.println(max);
     }

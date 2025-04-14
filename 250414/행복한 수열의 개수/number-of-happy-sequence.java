@@ -17,7 +17,7 @@ public class Main {
         //행 세기
         for(int i=0; i<n; i++) {
             int cnt =1;
-            int maxVal = 0;
+            int maxVal = 1;
             for(int j=1; j<n; j++ ) {
                 if(grid[i][j] == grid[i][j-1]) {
                     cnt ++;
@@ -29,7 +29,7 @@ public class Main {
         }
         for(int i=0; i<n; i++) {
             int cnt =1;
-            int maxVal = 0;
+            int maxVal = 1;
             for(int j=1; j<n; j++ ) {
                 if(grid[j][i] == grid[j-1][i]) {
                     cnt ++;

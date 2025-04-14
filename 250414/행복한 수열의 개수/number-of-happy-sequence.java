@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -11,42 +11,34 @@ public class Main {
             for (int j = 0; j < n; j++)
                 grid[i][j] = sc.nextInt();
         
-        int answer = 0;
-        
-        // 행 탐색
-        for (int i = 0; i < n; i++) {
-            int count = 1;
-            int maxCount = 1;
-            for (int j = 1; j < n; j++) {
-                if (grid[i][j] == grid[i][j-1]) {
-                    count++;
-                } else {
-                    count = 1;
+        // Please write your code here.
+
+        int ans = 0;
+        //행 세기
+        for(int i=0; i<n; i++) {
+            int cnt =1;
+            int maxVal = 0;
+            for(int j=1; j<n; j++ ) {
+                if(grid[i][j] == grid[i][j-1]) {
+                    cnt ++;
                 }
-                maxCount = Math.max(maxCount, count);
+                else cnt = 1;
+                maxVal = Math.max(cnt, maxVal);
             }
-            if (maxCount >= m) {
-                answer++;
-            }
+            if(maxVal >=m ) ans ++;
         }
-        
-        // 열 탐색
-        for (int i = 0; i < n; i++) {
-            int count = 1;
-            int maxCount = 1;
-            for (int j = 1; j < n; j++) {
-                if (grid[j][i] == grid[j-1][i]) {
-                    count++;
-                } else {
-                    count = 1;
+        for(int i=0; i<n; i++) {
+            int cnt =1;
+            int maxVal = 0;
+            for(int j=1; j<n; j++ ) {
+                if(grid[j][i] == grid[j-1][i]) {
+                    cnt ++;
                 }
-                maxCount = Math.max(maxCount, count);
+                else cnt = 1;
+                maxVal = Math.max(cnt, maxVal);
             }
-            if (maxCount >= m) {
-                answer++;
-            }
+            if(maxVal >=m ) ans ++;
         }
-        
-        System.out.println(answer);
+        System.out.println(ans);
     }
 }

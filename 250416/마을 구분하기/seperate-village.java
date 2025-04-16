@@ -52,8 +52,6 @@ public class Main {
                         if(!visited[nx][ny] && grid[nx][ny] == 1) {
                             visited[nx][ny] = true; //방문
                             cnt++;
-                            x = nx;
-                            y = ny;
                             dfs(nx, ny);
 
                         }

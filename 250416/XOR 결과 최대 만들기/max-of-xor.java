@@ -25,7 +25,7 @@ public class Main {
             //res에 들어가 있음
             //XOR 되는 최대값 확인하기
             // 지금 res 의 최대값
-            int temp =1;
+            int temp =0;
             for(int r: res) {
                 temp = temp ^ r;
             }    

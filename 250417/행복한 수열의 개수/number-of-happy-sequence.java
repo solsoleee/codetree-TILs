@@ -54,8 +54,13 @@ public class Main {
                 }
             }
         }
-
-        System.out.println(res);
+        if(n == 1) {
+            System.out.println(2);
+        }
+        else{
+            System.out.println(res);
+        }
+        
 
 
 

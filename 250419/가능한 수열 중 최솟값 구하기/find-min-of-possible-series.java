@@ -4,7 +4,6 @@ public class Main {
     static int n;
     static int[] res;
     static int[] arr = {4, 5, 6};
-    static int[] answer;
     static boolean found = false;
 
     public static void main(String[] args) {
@@ -12,36 +11,33 @@ public class Main {
         n = sc.nextInt();
         res = new int[n];
         permu(0);
-        // 출력은 처음 만나는 것만!
     }
 
-    // 반복되는 수열인지 확인
-    static boolean isRepeated(int[] seq, int len) {
+    static boolean isGood(int[] seq, int len) {
         for (int l = 1; l <= len / 2; l++) {
-            boolean valid = true;
-            for (int i = 0; i + l < len; i++) {
-                if (seq[i] != seq[i + l]) {
-                    valid = false;
+            boolean isSame = true;
+            for (int i = 0; i < l; i++) {
+                if (seq[len - 1 - i] != seq[len - 1 - l - i]) {
+                    isSame = false;
                     break;
                 }
             }
-            if (valid) return true;
+            if (isSame) return false; // 반복 있음
         }
-        return false;
+        return true;
     }
 
-    // 중복 순열
     static void permu(int depth) {
         if (found) return;
 
+        if (!isGood(res, depth)) return; // 백트래킹!
+
         if (depth == n) {
-            if (!isRepeated(res, n)) {
-                for (int i = 0; i < n; i++) {
-                    System.out.print(res[i]);
-                }
-                System.out.println();
-                found = true; // 사전순 첫 번째만 출력
+            for (int i = 0; i < n; i++) {
+                System.out.print(res[i]);
             }
+            System.out.println();
+            found = true;
             return;
         }
 

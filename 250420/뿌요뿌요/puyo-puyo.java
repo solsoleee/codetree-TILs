@@ -30,7 +30,7 @@ public class Main {
                 }
             }
         }
-        System.out.println(total +" " ans);
+        System.out.println(total +" " +ans);
         //System.out.println(ans);
     }
 

@@ -29,7 +29,7 @@ public class Main {
         for(int i=1; i<len; i++) {
             int x = arr[i][0];
             int y = arr[i][1];
-            if(arr[i-1][1] > x) {
+            if(arr[i-1][1] >= x) {
                 return 0;
             }
         }

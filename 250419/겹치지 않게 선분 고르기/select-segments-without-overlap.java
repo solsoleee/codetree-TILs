@@ -25,6 +25,11 @@ public class Main {
         
         int len = arr.length;
         //System.out.println(len);
+        Arrays.sort(arr, (a, b) -> {
+    if (a[0] != b[0]) return a[0] - b[0];
+    return a[1] - b[1];
+});
+
         //Arrays.sort(arr);
         for(int i=1; i<len; i++) {
             int x = arr[i][0];

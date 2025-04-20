@@ -12,7 +12,7 @@ public class Main {
         c1 = sc.nextInt();
         r2 = sc.nextInt();
         c2 = sc.nextInt();
-        ans = 0;
+        ans = -1;
         // Please write your code here.
         grid = new int[n][n];
         visited = new boolean[n][n];

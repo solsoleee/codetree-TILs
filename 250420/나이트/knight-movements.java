@@ -42,7 +42,7 @@ public class Main {
                 int nx = d[0] + dx;
                 int ny = d[1] + dy;
                 if(check(nx,ny) && !visited[nx][ny]) {
-
+                    visited[nx][ny] = true;
                     que.offer(new int[] {nx,ny,diff+1});
                 }
             }

@@ -41,7 +41,7 @@ public class Main {
     }
 
     static void dijkstra(int start) {
-        PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(o -> o[1])); // (노드, 거리) 기준으로 오름차순 정렬
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) → Integer.compare(a[0], b[0])); // (노드, 거리) 기준으로 오름차순 정렬
         dist[start] = 0; // 시작점의 거리는 0
         pq.offer(new int[] {start, 0}); // (시작점, 0)
 

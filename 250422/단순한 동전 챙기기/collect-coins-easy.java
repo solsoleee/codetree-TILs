@@ -24,58 +24,35 @@ public class Main {
                     end[0] = i;
                     end[1] = j;
                 } else if (Character.isDigit(grid[i][j])) {
-                    coinList.add(new int[]{i, j});
+                    int num = grid[i][j] - '0';
+                    coinList.add(new int[]{num, i, j});
                 }
             }
         }
 
-        comb(0, 0, new ArrayList<>());
-        System.out.println(minVal == Integer.MAX_VALUE ? -1 : minVal);
-    }
-
-    static void comb(int idx, int cnt, List<int[]> selected) {
-        if (cnt == 3) {
-            calcMinPath(selected);
-            return;
-        }
-        if (idx == coinList.size()) return;
-
-        // 선택하지 않는 경우
-        comb(idx + 1, cnt, selected);
-
-        // 선택하는 경우
-        selected.add(coinList.get(idx));
-        comb(idx + 1, cnt + 1, selected);
-        selected.remove(selected.size() - 1);
-    }
-
-    static void calcMinPath(List<int[]> coins) {
-        boolean[] used = new boolean[3];
-        permute(coins, new ArrayList<>(), used);
-    }
-
-    static void permute(List<int[]> coins, List<int[]> path, boolean[] used) {
-        if (path.size() == 3) {
-            int dist = distance(start, path.get(0)) +
-                       distance(path.get(0), path.get(1)) +
-                       distance(path.get(1), path.get(2)) +
-                       distance(path.get(2), end);
-            minVal = Math.min(minVal, dist);
+        if (coinList.size() < 3) {
+            System.out.println(-1);
             return;
         }
 
-        for (int i = 0; i < 3; i++) {
-            if (!used[i]) {
-                used[i] = true;
-                path.add(coins.get(i));
-                permute(coins, path, used);
-                path.remove(path.size() - 1);
-                used[i] = false;
-            }
-        }
+        // 숫자 기준 오름차순 정렬
+        coinList.sort(Comparator.comparingInt(a -> a[0]));
+
+        // 앞 3개 동전 고정 순서 방문
+        int[] c1 = coinList.get(0);
+        int[] c2 = coinList.get(1);
+        int[] c3 = coinList.get(2);
+
+        int dist = 0;
+        dist += distance(start[0], start[1], c1[1], c1[2]);
+        dist += distance(c1[1], c1[2], c2[1], c2[2]);
+        dist += distance(c2[1], c2[2], c3[1], c3[2]);
+        dist += distance(c3[1], c3[2], end[0], end[1]);
+
+        System.out.println(dist);
     }
 
-    static int distance(int[] a, int[] b) {
-        return Math.abs(a[0] - b[0]) + Math.abs(a[1] - b[1]);
+    static int distance(int x1, int y1, int x2, int y2) {
+        return Math.abs(x1 - x2) + Math.abs(y1 - y2);
     }
 }

@@ -38,18 +38,29 @@ public class Main {
         // 숫자 기준 오름차순 정렬
         coinList.sort(Comparator.comparingInt(a -> a[0]));
 
-        // 앞 3개 동전 고정 순서 방문
-        int[] c1 = coinList.get(0);
-        int[] c2 = coinList.get(1);
-        int[] c3 = coinList.get(2);
+        // 숫자가 가장 작은 3개 고르고, 고정 순서 방문
+        for (int i = 0; i < coinList.size(); i++) {
+            for (int j = i + 1; j < coinList.size(); j++) {
+                for (int k = j + 1; k < coinList.size(); k++) {
+                    int[] c1 = coinList.get(i);
+                    int[] c2 = coinList.get(j);
+                    int[] c3 = coinList.get(k);
 
-        int dist = 0;
-        dist += distance(start[0], start[1], c1[1], c1[2]);
-        dist += distance(c1[1], c1[2], c2[1], c2[2]);
-        dist += distance(c2[1], c2[2], c3[1], c3[2]);
-        dist += distance(c3[1], c3[2], end[0], end[1]);
+                    // 조건: 숫자 값 오름차순이어야 함
+                    if (c1[0] < c2[0] && c2[0] < c3[0]) {
+                        int dist = 0;
+                        dist += distance(start[0], start[1], c1[1], c1[2]);
+                        dist += distance(c1[1], c1[2], c2[1], c2[2]);
+                        dist += distance(c2[1], c2[2], c3[1], c3[2]);
+                        dist += distance(c3[1], c3[2], end[0], end[1]);
 
-        System.out.println(dist);
+                        minVal = Math.min(minVal, dist);
+                    }
+                }
+            }
+        }
+
+        System.out.println(minVal == Integer.MAX_VALUE ? -1 : minVal);
     }
 
     static int distance(int x1, int y1, int x2, int y2) {

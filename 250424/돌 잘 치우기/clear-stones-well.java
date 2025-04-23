@@ -53,10 +53,9 @@ public class Main {
             }
             //bfs를 돌려서 최대값.
             
-            for(int s[]: startPoints) {
-                int ans = bfs(s[0],s[1]);
-                maxVal = Math.max(maxVal, ans);
-            }
+
+            int ans = bfs();
+            maxVal = Math.max(maxVal, ans);
             
 
             return;
@@ -82,14 +81,16 @@ public class Main {
         return x>=0 && x<n && y>=0 && y<n;
     }
 
-    static int bfs(int x, int y) {
-        for(int i=0; i<n; i++) {
-            Arrays.fill(visited[i], false);
-        }
+    static int bfs() {
+        int cnt=0;
         Queue<int []> que = new ArrayDeque<>();
-        que.offer(new int [] {x,y});
-        visited[x][y] = true;
-        int cnt = 1;
+        for(int s[]:startPoints) {
+            que.offer(new int[]{s[0],s[1]});
+            visited[s[0]][s[1]] = true;
+            cnt++;
+        }
+
+        
         while(!que.isEmpty()) {
             int t[] = que.poll();
             int dx = t[0];

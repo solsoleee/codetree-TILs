@@ -74,6 +74,7 @@ public class Main {
     static void init() {
         for(int i=0; i<n; i++) {
             copyGrid[i] = Arrays.copyOf(grid[i],n);
+            Arrays.fill(visited[i], false);
         }
     }
 

@@ -20,6 +20,7 @@ public class Main {
         }
         int ans = m;
         boolean[] m_check = new boolean[m];
+        
         while(t > 0) {
             if(ans <=0 ) {
                 break;
@@ -69,16 +70,19 @@ public class Main {
                 }
             }
             // 구슬 비 활 성 화
-            for(int i=0; i<m; i++) {
-                int temp[] = list.get(i);
-                for(int j=0; j<list.size(); j++) {
-                    if(i==j) continue;
-                    if(Arrays.equals(temp, list.get(j))) {
-                        m_check[i] = true;
-                        break;
+            if(list.size() > 1) {
+                for(int i=0; i<m; i++) {
+                    int temp[] = list.get(i);
+                    for(int j=0; j<list.size(); j++) {
+                        if(i==j) continue;
+                        if(Arrays.equals(temp, list.get(j))) {
+                            m_check[i] = true;
+                            break;
+                        }
                     }
                 }
             }
+
 
             
             // 구슬 1번부터 차례대로 큰 곳에

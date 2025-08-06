@@ -26,49 +26,43 @@ public class Main {
         
     }
     //세로 검색하는 로직
-    static int sero() {
-        int res=0;
-        for(int i=0; i<n; i++) {
-            int temp = grid[0][i];
-            
-            for(int j=1; j<n; j++) {
-                int cnt=1;
-                if(grid[j][i] == temp) {
-                    cnt++;
-                }
-                temp = grid[j][i];
-                if(cnt >= m) {
-                    res++;
-                    break;
-                }
+static int sero() {
+    int res = 0;
+    for(int i = 0; i < n; i++) {
+        int cnt = 1;
+        for(int j = 1; j < n; j++) {
+            if(grid[j][i] == grid[j-1][i]) {
+                cnt++;
+            } else {
+                cnt = 1;
+            }
+            if(cnt >= m) {
+                res++;
+                break;
             }
         }
-        return res;
     }
+    return res;
+}
 
-
-
-
-    //가로 검색하는 로직
-    static int garo() {
-        int res = 0;
-        for(int i=0; i<n; i++) {
-            
-            //첫번째 열은 저장
-            int temp = grid[i][0];
-            int cnt = 1;
-            for(int j=1; j<n; j++) {
-                if(grid[i][j] == temp) {
-                    cnt++;
-                }
-                temp = grid[i][j];
-                if(cnt >= m) {
-                    res++;
-                    break;
-                }
+static int garo() {
+    int res = 0;
+    for(int i = 0; i < n; i++) {
+        int cnt = 1;
+        for(int j = 1; j < n; j++) {
+            if(grid[i][j] == grid[i][j-1]) {
+                cnt++;
+            } else {
+                cnt = 1;
+            }
+            if(cnt >= m) {
+                res++;
+                break;
             }
         }
-        return res;
     }
+    return res;
+}
+
 
 }

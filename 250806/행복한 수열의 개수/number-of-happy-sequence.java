@@ -17,12 +17,9 @@ public class Main {
         
         // Please write your code here.
         int r = garo()+sero();
-        if(n==1 && m==1) {
-            System.out.println(2);
-        }
-        else {
+
             System.out.println(r);
-        }
+
         
     }
     //세로 검색하는 로직

@@ -22,7 +22,6 @@ public class Main {
         }
         else {
             System.out.println(r);
-            
         }
         
     }
@@ -31,8 +30,9 @@ public class Main {
         int res=0;
         for(int i=0; i<n; i++) {
             int temp = grid[0][i];
-            int cnt=1;
+            
             for(int j=1; j<n; j++) {
+                int cnt=1;
                 if(grid[j][i] == temp) {
                     cnt++;
                 }

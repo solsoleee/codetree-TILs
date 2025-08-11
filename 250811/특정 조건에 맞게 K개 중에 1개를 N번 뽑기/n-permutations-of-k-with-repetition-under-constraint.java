@@ -20,7 +20,7 @@ public class Main {
 
     static void permu(int depth) {
         if(depth == n) {
-            if(check()) {
+            if(!check()) {
                 for(int i=0; i<n; i++) {
                 System.out.print(res[i] +" ");
             }
@@ -34,16 +34,25 @@ public class Main {
             permu(depth+1);
         }
     }
-        //같은건 골라내는
+        //같은 숫자가 3번 이상 나오는 경우
     static boolean check() {
-        if(n==1) return true;
+        int cnt=1;
         int temp = res[0];
         for(int i=1; i<n; i++) {
-            if(res[i] != temp) {
-                return true; //하나라도 다르면 참
+            if(cnt >=3) {
+                return true; //연속하는거
             }
-            temp = res[i];
-        }
-        return false;
+            if(res[i-1] == res[i]) {
+                cnt++;
+            }
+            else  {
+                cnt=1;
+            }
+
     }
+    if(cnt >=3) {
+                return true; //연속하는거
+            }
+    return false;
+}
 }

@@ -39,7 +39,7 @@ public class Main {
         for(int i=0; i<n; i++) {
             if(!visited[i]) {
 
-                    res[depth] = arr[i];
+                    res[depth] = i;
                     visited[i] = true;
                     permu(depth+1);
                     visited[i] = false;

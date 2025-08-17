@@ -8,7 +8,7 @@ public class Main {
         A = sc.next();
         int len = A.length()-1;
         
-        while(len > 0) {
+        while(len >= 0) {
             A = change(A); //n번 돌렸을 때
             String r = compress(A); //압축
             minVal = Math.min(count(r), minVal); //최소값

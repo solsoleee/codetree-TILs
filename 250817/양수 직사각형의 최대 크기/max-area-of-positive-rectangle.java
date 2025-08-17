@@ -14,6 +14,7 @@ public class Main {
             for (int j = 0; j < m; j++)
                 grid[i][j] = sc.nextInt();
         // Please write your code here.
+        flag = false;
         for(int i=0; i<n; i++) { //왼쪽 끝점
             for(int j=0; j<m; j++) {
                 
@@ -22,7 +23,7 @@ public class Main {
                         //System.out.println("IJ"+" "+i +" " +j);
                         
                         //System.out.println("AB"+" "+a +" " +b);
-                        flag = false;
+                        
                         if(check(i,j,a,b)){
                             flag = true;
                             

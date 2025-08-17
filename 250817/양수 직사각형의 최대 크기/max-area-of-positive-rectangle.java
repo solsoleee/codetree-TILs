@@ -4,7 +4,7 @@ public class Main {
     static int m;
     static int[][]grid;
     static int maxVal = Integer.MIN_VALUE;
-    
+    static boolean flag;
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         n = sc.nextInt();
@@ -22,7 +22,7 @@ public class Main {
                         //System.out.println("IJ"+" "+i +" " +j);
                         
                         //System.out.println("AB"+" "+a +" " +b);
-                        boolean flag = false;
+                        flag = false;
                         if(check(i,j,a,b)){
                             flag = true;
                             //System.out.println("a"+a);

@@ -4,6 +4,7 @@ public class Main {
     static int m;
     static int[][]grid;
     static int maxVal = Integer.MIN_VALUE;
+    
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         n = sc.nextInt();
@@ -21,8 +22,9 @@ public class Main {
                         //System.out.println("IJ"+" "+i +" " +j);
                         
                         //System.out.println("AB"+" "+a +" " +b);
-                        boolean flag = check(i,j,a,b);
-                        if(flag){
+                        boolean flag = false;
+                        if(check(i,j,a,b)){
+                            flag = true;
                             //System.out.println("a"+a);
                             //System.out.println("IJ"+" "+i +" " +j);
                             //System.out.println("AB"+" "+a +" " +b);
@@ -35,7 +37,11 @@ public class Main {
 
             }
         }
-        System.out.println(maxVal);
+        if(flag) {
+            System.out.println(maxVal);
+        }
+        else System.out.println(-1);
+        
 
 
     }

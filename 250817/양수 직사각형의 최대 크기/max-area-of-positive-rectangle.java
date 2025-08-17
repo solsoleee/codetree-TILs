@@ -25,7 +25,7 @@ public class Main {
                         flag = false;
                         if(check(i,j,a,b)){
                             flag = true;
-                            //System.out.println("a"+a);
+                            
                             //System.out.println("IJ"+" "+i +" " +j);
                             //System.out.println("AB"+" "+a +" " +b);
                             int l = a-i+1;
@@ -50,7 +50,7 @@ public class Main {
         //ab부터 xy까지
         for(int i=a; i<=x; i++) {
             for(int j=b; j<=y; j++) {
-                if(grid[i][j] < 0) return false;
+                if(grid[i][j] <= 0) return false;
             }
         }
         return true;

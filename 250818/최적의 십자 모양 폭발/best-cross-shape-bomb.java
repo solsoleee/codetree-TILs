@@ -66,18 +66,36 @@ public class Main {
     }
 
     //중력, 0일 때 내려옴
+    // static void gravity() {
+    //     for(int i=0; i<n; i++ ) {
+    //         for(int j=n-1; j>0; j--) {
+    //             //맨 아래부터 검사
+    //             if(temp[j][i] == 0) {
+    //                 //아래가 0이면 한칸씩 땡겨오기
+    //                 temp[j][i] = temp[j-1][i];
+    //                 temp[j-1][i] = 0;
+    //             }
+    //         }   
+    //     }
+    // }
+    
     static void gravity() {
-        for(int i=0; i<n; i++ ) {
-            for(int j=n-1; j>0; j--) {
-                //맨 아래부터 검사
-                if(temp[j][i] == 0) {
-                    //아래가 0이면 한칸씩 땡겨오기
-                    temp[j][i] = temp[j-1][i];
-                    temp[j-1][i] = 0;
-                }
-            }   
+    for (int col = 0; col < n; col++) {
+        int write = n - 1; // 아래에서부터 채워넣을 위치
+        for (int row = n - 1; row >= 0; row--) {
+            if (temp[row][col] != 0) {
+                temp[write][col] = temp[row][col];
+                if (write != row) temp[row][col] = 0; // 자리를 옮겼다면 원래 칸은 0
+                write--;
+            }
         }
-    }        
+        // 위에 남은 부분은 다 0으로
+        for (int row = write; row >= 0; row--) {
+            temp[row][col] = 0;
+        }
+    }
+}
+       
 
     //초기화
     static void init() {

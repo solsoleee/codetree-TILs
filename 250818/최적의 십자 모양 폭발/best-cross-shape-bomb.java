@@ -28,42 +28,76 @@ public class Main {
     
         System.out.println(maxVal);
     }
-    //2개인것만 짝지음 (행, 각각)
     static int pairRow() {
-        int res = 0;
-        for(int i=0; i<n; i++) {
-            int cnt =1;
-            for(int j=1; j<n; j++) {
-                if(temp[i][j-1] == temp[i][j]) {
-                    cnt++;
-                }
-                else{
-                    if(cnt == 2) res++;
-                    cnt = 1;
-                }
+    int res = 0;
+    for (int i = 0; i < n; i++) {
+        int cnt = 1;
+        for (int j = 1; j < n; j++) {
+            if (temp[i][j] != 0 && temp[i][j] == temp[i][j-1]) {
+                cnt++;
+            } else {
+                if (cnt == 2) res++;
+                cnt = 1;
             }
-            if(cnt == 2) res++;
         }
-        return res;
+        if (cnt == 2) res++;
     }
-        //2개인것만 짝지음 (행, 각각)
-    static int pairCol() {
-        int res = 0;
-        for(int i=0; i<n; i++) {
-            int cnt =1;
-            for(int j=1; j<n; j++) {
-                if(temp[j-1][i] == temp[j][i]) {
-                    cnt++;
-                }
-                else{
-                    if(cnt == 2) res++;
-                    cnt = 1;
-                }
+    return res;
+}
+
+static int pairCol() {
+    int res = 0;
+    for (int j = 0; j < n; j++) {
+        int cnt = 1;
+        for (int i = 1; i < n; i++) {
+            if (temp[i][j] != 0 && temp[i][j] == temp[i-1][j]) {
+                cnt++;
+            } else {
+                if (cnt == 2) res++;
+                cnt = 1;
             }
-            if(cnt == 2) res++;
         }
-        return res;
+        if (cnt == 2) res++;
     }
+    return res;
+}
+
+    // //2개인것만 짝지음 (행, 각각)
+    // static int pairRow() {
+    //     int res = 0;
+    //     for(int i=0; i<n; i++) {
+    //         int cnt =1;
+    //         for(int j=1; j<n; j++) {
+    //             if(temp[i][j-1] == temp[i][j]) {
+    //                 cnt++;
+    //             }
+    //             else{
+    //                 if(cnt == 2) res++;
+    //                 cnt = 1;
+    //             }
+    //         }
+    //         if(cnt == 2) res++;
+    //     }
+    //     return res;
+    // }
+    //     //2개인것만 짝지음 (행, 각각)
+    // static int pairCol() {
+    //     int res = 0;
+    //     for(int i=0; i<n; i++) {
+    //         int cnt =1;
+    //         for(int j=1; j<n; j++) {
+    //             if(temp[j-1][i] == temp[j][i]) {
+    //                 cnt++;
+    //             }
+    //             else{
+    //                 if(cnt == 2) res++;
+    //                 cnt = 1;
+    //             }
+    //         }
+    //         if(cnt == 2) res++;
+    //     }
+    //     return res;
+    // }
 
     //중력, 0일 때 내려옴
     // static void gravity() {

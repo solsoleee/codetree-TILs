@@ -27,18 +27,21 @@ public class Main {
             //상하좌우 탐색
             boolean flag = false;
             int num = grid[x][y]; //현재 위치
-            int max = num;
-            for(int d[]:delats) { //가장 큰 수 찾기
+            
+
+            for(int d[]:delats) { //상하좌우 
+                if(flag) break;
                 int nx = x + d[0];
                 int ny = y + d[1];
+                //System.out.println(nx +" "+ ny +" ");
                 if(check(nx, ny)) { //범위 만족하고
                     if(num < grid[nx][ny]) { //현재값보다 크고
-                        max = grid[nx][ny]; //갱신
+                        
                         x = nx;
                         y = ny;
                         flag = true;
                         list.add(grid[nx][ny]);
-                        break;
+                        
                     }
                 } 
             }
@@ -50,6 +53,6 @@ public class Main {
         }
     }
     static boolean check(int x, int y) { 
-        return x>=0 && x<n && y>=0 && y<n;
+        return x>0 && x<=n && y>0 && y<=n;
     }
 }

@@ -33,14 +33,12 @@ public class Main {
                 int ny = y + d[1];
                 if(check(nx, ny)) { //범위 만족하고
                     if(num < grid[nx][ny]) { //현재값보다 크고
-                        if(max < grid[nx][ny]) {
-                            max = grid[nx][ny]; //갱신
-                            x = nx;
-                            y = ny;
-                            flag = true;
-                            list.add(grid[nx][ny]);
-                        }
-                        
+                        max = grid[nx][ny]; //갱신
+                        x = nx;
+                        y = ny;
+                        flag = true;
+                        list.add(grid[nx][ny]);
+                        break;
                     }
                 } 
             }

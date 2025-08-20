@@ -5,7 +5,7 @@ public class Main {
     static int c;
     static int [][] grid;
     static List<Integer> list = new ArrayList<>();
-    static int[][] delats = {{1,0},{0,1},{-1,0},{0,-1}};
+    static int[][] delats = {{-1,0},{1,0},{0,-1},{0,1}};
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         n = sc.nextInt();

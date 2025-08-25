@@ -21,17 +21,18 @@ public class Main {
     }
     static void combi(int start, int depth) {
         if(depth == m) {
-            
+            int maxVal = Integer.MIN_VALUE;
             for(int i=0; i<m-1; i++) {
                 for(int j=i+1; j<m; j++) {
+                    //여기서 제일 큰거
                     int a = (int)Math.pow(res[i][0]-res[j][0],2);
                     int b = (int)Math.pow(res[i][1]-res[j][1],2);
                     //System.out.println(Arrays.deepToString(res));
                     //System.out.println(a+" " + b);
-                    minVal = Math.min(minVal, a+b);
-                    
+                    maxVal = Integer.max(a+b, maxVal);
                 }
             }
+            minVal = Math.min(minVal, maxVal);
             return;
         }
         for(int i=start; i<n; i++) {

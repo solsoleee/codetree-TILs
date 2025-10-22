@@ -44,7 +44,7 @@ public class Main {
 
         }
 
-        System.out.println(answer +" " + answerK);
+        System.out.println(answerK +" " + answer);
     }
 
     

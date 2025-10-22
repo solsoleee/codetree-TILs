@@ -30,7 +30,7 @@ public class Main {
                     break;
                 }
             }
-            if(flag) {
+            if(flag || n==1) {
                 for(int i=0; i<n; i++) {
                     System.out.print(res[i] +" ");
                 }

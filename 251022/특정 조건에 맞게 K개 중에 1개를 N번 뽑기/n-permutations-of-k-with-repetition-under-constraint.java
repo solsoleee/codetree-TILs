@@ -30,6 +30,7 @@ public class Main {
                     if(c >=3) break;
                 }
                 else c = 1;
+                pre = res[i];
             }
             if(c < 3) {
                 for(int i=0; i<n; i++) {

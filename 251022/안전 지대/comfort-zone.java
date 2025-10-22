@@ -36,7 +36,7 @@ public class Main {
                     }
                 }
             }
-            if(answer <= cnt) {
+            if(answer < cnt) {
                 answer = cnt;
                 answerK = k;
             }

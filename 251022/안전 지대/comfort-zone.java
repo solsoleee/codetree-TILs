@@ -24,7 +24,7 @@ public class Main {
             
         // Please write your code here.
         
-        for(int k=1; k<maxK; k++) {
+        for(int k=1; k<=maxK; k++) {
             //방문초기화
             visited = new boolean[n][m];
             int cnt=0;

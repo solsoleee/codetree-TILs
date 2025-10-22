@@ -24,13 +24,13 @@ public class Main {
         if(cnt == n) {
             int a = res[0];
             boolean flag = false;
-            for(int i=1; i<n; i++) {
+            for(int i=0; i<n; i++) {
                 if(a != res[i]) {
                     flag = true; //하나라도 다르면
                     break;
                 }
             }
-            if(flag || n==1 || k==1) {
+            if(flag) {
                 for(int i=0; i<n; i++) {
                     System.out.print(res[i] +" ");
                 }

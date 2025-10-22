@@ -14,11 +14,17 @@ public class Main {
             if (x == 1) return d;
 
             // -1
-            if (x - 1 >= 1 && !vis[x - 1]) { vis[x - 1] = true; q.offer(new int[]{x - 1, d + 1}); }
+            if (x - 1 >= 1 && !vis[x - 1]) { 
+                vis[x - 1] = true; 
+                q.offer(new int[]{x - 1, d + 1}); }
             // +1
-            if (x + 1 <= limit && !vis[x + 1]) { vis[x + 1] = true; q.offer(new int[]{x + 1, d + 1}); }
+            if (!vis[x + 1]) { 
+                vis[x + 1] = true; 
+                q.offer(new int[]{x + 1, d + 1}); }
             // /2
-            if (x % 2 == 0 && !vis[x / 2]) { vis[x / 2] = true; q.offer(new int[]{x / 2, d + 1}); }
+            if (x % 2 == 0 && !vis[x / 2]) { 
+                vis[x / 2] = true; 
+                q.offer(new int[]{x / 2, d + 1}); }
             // /3
             if (x % 3 == 0 && !vis[x / 3]) { vis[x / 3] = true; q.offer(new int[]{x / 3, d + 1}); }
         }

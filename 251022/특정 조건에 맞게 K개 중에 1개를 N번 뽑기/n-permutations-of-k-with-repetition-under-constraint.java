@@ -27,6 +27,7 @@ public class Main {
             for(int i=1; i<n; i++) {
                 if(pre == res[i]) {
                     c++;
+                    if(c >=3) break;
                 }
                 else c = 1;
             }

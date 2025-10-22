@@ -22,15 +22,14 @@ public class Main {
 
     static void permu(int cnt) {
         if(cnt == n) {
-            int a = res[0];
-            boolean flag = false;
-            for(int i=0; i<n; i++) {
-                if(a != res[i]) {
-                    flag = true; //하나라도 다르면
-                    break;
+            int pre = res[0];
+            int c = 1;
+            for(int i=1; i<n; i++) {
+                if(pre == res[i]) {
+                    c++;
                 }
             }
-            if(flag || n==1) {
+            if(c < 3) {
                 for(int i=0; i<n; i++) {
                     System.out.print(res[i] +" ");
                 }

@@ -28,6 +28,7 @@ public class Main {
                 if(pre == res[i]) {
                     c++;
                 }
+                else c = 1;
             }
             if(c < 3) {
                 for(int i=0; i<n; i++) {

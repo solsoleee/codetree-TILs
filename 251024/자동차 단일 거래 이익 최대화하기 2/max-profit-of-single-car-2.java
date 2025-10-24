@@ -5,16 +5,13 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int[] prices = new int[n];
-        for(int i = 0; i < n; i++)
-            prices[i] = sc.nextInt();
-        // Please write your code here.
-        int answer = 0;
-        //조합으로 풀어도 되고..
-        for(int i=0; i<n; i++) {
-            for(int j=i; j<n; j++) {
-                int profit = prices[j] - prices[i];
-                if(profit > 0) answer = Math.max(profit, answer);
-            }
+        for (int i = 0; i < n; i++) prices[i] = sc.nextInt();
+
+        int minSoFar = Integer.MAX_VALUE;
+        int answer = 0; // 이익이 없으면 0
+        for (int p : prices) {
+            if (p < minSoFar) minSoFar = p;      // 최저가 갱신(살 타이밍)
+            else answer = Math.max(answer, p - minSoFar); // 지금 판다면 이익
         }
         System.out.println(answer);
     }

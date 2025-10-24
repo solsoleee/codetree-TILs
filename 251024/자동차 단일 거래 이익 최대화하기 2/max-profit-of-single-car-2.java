@@ -1,17 +1,24 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int[] prices = new int[n];
-        for (int i = 0; i < n; i++) prices[i] = sc.nextInt();
-
-        int minSoFar = Integer.MAX_VALUE;
-        int answer = 0; // 이익이 없으면 0
-        for (int p : prices) {
-            if (p < minSoFar) minSoFar = p;      // 최저가 갱신(살 타이밍)
-            else answer = Math.max(answer, p - minSoFar); // 지금 판다면 이익
+        for(int i = 0; i < n; i++)
+            prices[i] = sc.nextInt();
+        
+        int answer = 0;
+        int temp = Integer.MAX_VALUE;
+        //작은거 정해놓고 
+        //int temp = p;
+        for(int p:prices) {
+            // 현재 작다면
+            if(p < temp ) {
+                temp=p;
+                
+            }
+            else answer = Math.max(answer, p-temp);
         }
         System.out.println(answer);
     }

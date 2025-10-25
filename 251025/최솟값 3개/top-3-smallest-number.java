@@ -3,13 +3,13 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
-        int[] arr = new int[N];
-        PriorityQueue<Integer> que = new PriorityQueue<>();
+        long[] arr = new long[N];
+        PriorityQueue<Long> que = new PriorityQueue<>();
         
         for (int i = 0; i < N; i++) {
-            int ans = 1;
-            int [] temp = new int[3];
-            arr[i] = sc.nextInt();
+            long ans = 1;
+            long [] temp = new long[3];
+            arr[i] = sc.nextLong();
             que.offer(arr[i]);
             if(i<2) System.out.println(-1);
             else {
